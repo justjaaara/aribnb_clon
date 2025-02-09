@@ -107,6 +107,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                                 <MenuItem
                                     onClick={() => {}}
                                     label="My properties"
+
                                 />
                                 <MenuItem
                                     onClick={() => {}}
