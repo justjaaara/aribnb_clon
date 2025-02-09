@@ -25,7 +25,16 @@ export default async function getCurrentUser() {
             return null;
         }
 
+<<<<<<< Updated upstream
         return currentUser;
+=======
+        return {
+            ...currentUser,
+            createdAt: currentUser.createdAt.toISOString(),
+            updatedAt: currentUser.updatedAt.toISOString(),
+            emailVerified: currentUser.emailVerified?.toISOString() || null
+        };
+>>>>>>> Stashed changes
     } catch (error: any) {
         return null;
     }
