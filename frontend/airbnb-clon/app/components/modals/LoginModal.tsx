@@ -94,21 +94,13 @@ const LoginModal = () => {
                 outline
                 label="Continue with Google"
                 icon={FcGoogle}
-<<<<<<< Updated upstream
-                onClick={() => {}}
-=======
                 onClick={() => signIn('google')}
->>>>>>> Stashed changes
             />
             <Button
                 outline
                 label="Continue with Github"
                 icon={AiFillGithub}
-<<<<<<< Updated upstream
-                onClick={() => {}}
-=======
                 onClick={() => signIn('github')}
->>>>>>> Stashed changes
             />
             <div
                 className='

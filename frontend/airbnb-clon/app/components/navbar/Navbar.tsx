@@ -1,6 +1,6 @@
 'use client';
 
-import { User } from "@prisma/client";
+
 
 
 import Container from "../Container";
@@ -8,16 +8,10 @@ import Categories from "./Categories";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
-<<<<<<< Updated upstream
-
-interface NavbarProps {
-  currentUser?: User | null;
-=======
 import { SafeUser } from "@/app/types";
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
->>>>>>> Stashed changes
 }
 
 const Navbar: React.FC<NavbarProps> = ({
@@ -45,11 +39,8 @@ const Navbar: React.FC<NavbarProps> = ({
             <Logo/>    
             <Search/>
             <UserMenu currentUser={ currentUser }/>
-<<<<<<< Updated upstream
-=======
       
             
->>>>>>> Stashed changes
           </div>
         </Container>
       </div>
