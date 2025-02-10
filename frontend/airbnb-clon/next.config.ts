@@ -1,9 +1,8 @@
+import type { NextConfig } from "next";
 
-const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
-  images: {
+const nextConfig: NextConfig = {
+  experimental: {},
+  images:{
     domains: [
       "avatars.githubusercontent.com",
       "lh3.googleusercontent.com"
@@ -12,4 +11,4 @@ const nextConfig = {
   /* config options here */
 };
 
-module.exports = nextConfig;
+export default nextConfig;
