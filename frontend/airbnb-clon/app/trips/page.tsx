@@ -4,7 +4,6 @@ import TripsClient from "./TripsClient";
 
 import getCurrentUser from "../actions/getCurrentUser";
 import getReservations from "../actions/getReservations";
-import { Reservation } from '@prisma/client';
 
 const TripsPage = async () => {
     const currentUser = await getCurrentUser();

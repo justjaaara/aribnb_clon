@@ -7,7 +7,7 @@ import Heading from "../Heading";
 import { categories } from "../navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import CountrySelect from "../inputs/CountrySelect";
+import CountrySelect, { CountrySelectValue } from "../inputs/CountrySelect";
 import dynamic from "next/dynamic";
 import Counter from "../inputs/Counter";
 import ImageUpload from "../inputs/ImageUpload";
@@ -65,7 +65,7 @@ const RentModal = () => {
         ssr: false
     }), [location]);
 
-    const setCustomValue = (id: string, value: any) => {
+    const setCustomValue = (id: string, value: string | number | CountrySelectValue) => {
         setValue(id, value, {
             shouldValidate: true,
             shouldDirty: true,

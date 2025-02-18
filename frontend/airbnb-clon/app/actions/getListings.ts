@@ -1,14 +1,25 @@
 import prisma from "@/app/libs/prismadb";
 
 export interface IListingsParams {
-  userId?: string;
-  guestCount?: number;
-  roomCount?: number;
   bathroomCount?: number;
-  startDate?: string;
-  endDate?: string;
-  locationValue?: string;
   category?: string;
+  endDate?: string;
+  guestCount?: number;
+  locationValue?: string;
+  roomCount?: number;
+  startDate?: string;
+  userId?: string;
+}
+
+export interface IQueryOptions {
+
+  bathroomCount?: { gte: number };
+  category?: string;
+  guestCount?: { gte: number };
+  locationValue?: string;
+  roomCount?: { gte: number };
+  userId?: string;
+  NOT?: object;
 }
 
 export default async function getListings(
@@ -26,7 +37,7 @@ export default async function getListings(
       category
      } = await params;
 
-    let query: any = {};
+    const query: IQueryOptions = {};
 
     if (userId) {
       query.userId = userId;
@@ -38,8 +49,8 @@ export default async function getListings(
 
     if (roomCount) {
       query.roomCount = {
-        gte: +roomCount
-      }
+        gte: +roomCount 
+      } 
     }
 
     if (guestCount) {
@@ -77,7 +88,6 @@ export default async function getListings(
       }
     }
 
-    
     const listings = await prisma.listing.findMany({
       where: query,
       orderBy: {
@@ -90,6 +100,7 @@ export default async function getListings(
       createdAt: listing.createdAt.toISOString(),
     }));
     return safeListings;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error("Error fetching listings:", error);
     throw new Error(error);

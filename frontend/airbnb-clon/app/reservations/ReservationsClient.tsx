@@ -22,7 +22,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
     currentUser
 }) => {
     const router = useRouter();
-    const {deletingId, setDeletingId} = useState('');
+    const [deletingId, setDeletingId] = useState('');
 
     const onCancel = useCallback((id: string) => {
         setDeletingId(id);

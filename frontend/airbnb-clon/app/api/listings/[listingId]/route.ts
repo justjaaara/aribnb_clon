@@ -1,23 +1,19 @@
-import { NextResponse } from "next/server";
+
+import { NextResponse, NextRequest } from "next/server";
 
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import prisma from '@/app/libs/prismadb';
 
-interface Iparams {
-    listingId?: string;
-}
-
-export async function DELETE(
-    request:Request,
-    { params } : { params: Iparams}
-) {
+export async function DELETE(request: NextRequest) {
     const currentUser = await getCurrentUser();
 
     if (!currentUser) {
         return NextResponse.error();
     }
 
-    const { listingId } = params;
+    // Obtener el ID desde la URL
+    const url = new URL(request.url);
+    const listingId = url.pathname.split("/").pop(); // Extraer el último segmento (listingId)
 
     if (!listingId || typeof listingId !== 'string') {
         throw new Error('Invalid ID');
@@ -28,7 +24,7 @@ export async function DELETE(
             id: listingId,
             userId: currentUser.id
         }
-    })
+    });
 
     return NextResponse.json(listing);
 }

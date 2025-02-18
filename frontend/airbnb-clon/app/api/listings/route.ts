@@ -1,11 +1,10 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
 import prisma from "@/app/libs/prismadb";
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import { parse } from "path";
 
 export async function POST(
-    request: Request,
+    request: NextRequest,
 ) {
     const currentUser = await getCurrentUser();
 
@@ -26,7 +25,7 @@ export async function POST(
         price
     } = body;
 
-    Object.keys(body).forEach((value: any) => {
+    Object.keys(body).forEach((value: string) => {
         if (!body[value]) {
             NextResponse.error();
         }

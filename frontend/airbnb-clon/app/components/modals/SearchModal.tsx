@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { formatISO } from "date-fns";
@@ -53,7 +54,7 @@ const SearchModal = () => {
             return onNext();
         }
 
-        let currentQuery = [];
+        let currentQuery = {};
 
         if (params) {
             currentQuery = qs.parse(params.toString());

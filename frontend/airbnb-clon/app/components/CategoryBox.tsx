@@ -11,6 +11,10 @@ interface CategoryBoxProps {
     selected?: boolean;
 }
 
+interface IUpdatedQuery {
+    [key: string] : string;
+}
+
 const CategoryBox: React.FC<CategoryBoxProps> = ({
     icon: Icon,
     label,
@@ -20,24 +24,24 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
     const params = useSearchParams();
 
     const handleClick = useCallback(() => {
-        let currentQuerry = {};
+        let currentQuery = {};
 
         if (params) {
-            currentQuerry = qs.parse(params.toString());
+            currentQuery = qs.parse(params.toString());
         }
 
-        const updatedQuerry: any = {
-            ...currentQuerry,
+        const updatedQuery: IUpdatedQuery = {
+            ...currentQuery,
             category: label
         }
 
         if (params?.get('category') === label) {
-            delete updatedQuerry.category;
+            delete updatedQuery.category;
         }
 
         const url = qs.stringifyUrl({
             url: '/',
-            query: updatedQuerry
+            query: updatedQuery
         }, { skipNull: true });
 
         router.push(url);

@@ -8,7 +8,7 @@ import "leaflet/dist/leaflet.css";
 // import markerIcon from "leaflet/dist/images/marker-icon.png";
 // import markerShadow from "leaflet/dist/images/marker-shadow.png"
 
-// @ts-ignore
+// @ts-expect-errors Por solucionar
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
     iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",

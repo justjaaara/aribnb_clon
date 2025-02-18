@@ -1,6 +1,5 @@
 import { Nunito } from "next/font/google";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import  Navbar   from "./components/navbar/Navbar";
 import ClientOnly from "./components/ClientOnly";
@@ -11,15 +10,6 @@ import getCurrentUser from "./actions/getCurrentUser";
 import RentModal from "./components/modals/RentModal";
 import SearchModal from "./components/modals/SearchModal";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const font = Nunito({
   subsets: ["latin"],

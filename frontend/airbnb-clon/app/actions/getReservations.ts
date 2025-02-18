@@ -1,9 +1,16 @@
 import prisma from '@/app/libs/prismadb';
+import { IQueryOptions } from './getListings';
 
 interface IParams {
     listingId?: string;
     userId?: string;
     authorId?: string;
+}
+
+interface IQuery extends IQueryOptions {
+    listingId?: string;
+    listing?: { userId: string };
+
 }
 
 export default async function getReservations(
@@ -12,7 +19,7 @@ export default async function getReservations(
     try {
         const { listingId, userId, authorId } = await params;
 
-        const query: any = {};
+        const query: IQuery = {};
 
         if (listingId) {
             query.listingId = listingId;
@@ -50,6 +57,7 @@ export default async function getReservations(
         );
 
         return safeReservations;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
         throw new Error(error);
     }
